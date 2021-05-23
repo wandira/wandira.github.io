@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Etch a Sketch
+        </title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body onload="populateCanvas()">
+        <div id="maindiv">
+            <div id="header">
+                <h1>
+                    Etch a Sketch
+                </h1>
+            </div>
+            <div id="palettes">
+                <button class="palette" onclick="setPalette(this)" value="black">Black</button>
+                <button class="palette" onclick="setPalette(this)" value="white">White</button>
+                <button class="palette" onclick="setPalette(this)" value="forest">Forest</button>
+                <button class="palette" onclick="setPalette(this)" value="earth">Earth</button>
+                <button class="palette" onclick="setPalette(this)" value="twilight">Twilight</button>
+                <button class="palette" onclick="setPalette(this)" value="stone">Stone</button>
+            </div>
+            <div id="canvas">
+
+            </div>
+            <div id="palettes">
+                <button class="palette" onclick="setPalette(this)" value="delete">Delete</button>
+                <button class="palette" onclick="resetCanvas()">RESET</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
