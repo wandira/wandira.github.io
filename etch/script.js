@@ -1,6 +1,9 @@
 //Default BG color
 const _mainBGColor = ['BISQUE'];
 
+//The canvas
+const canvas = document.getElementById('canvas');
+
 //Ink color palettes
 const _BLACK = ['BLACK'];
 const _WHITE = ['WHITE'];
@@ -56,29 +59,41 @@ function divColorChanger(div){
     div.setAttribute('style', `background: ${colorPicker(currPalette)}`);  
 }
 
-function resetCanvas(){
-    //get all child of canvas
-    const childDivs = document.getElementById('canvas').getElementsByTagName('div');
+function clearCanvas(){
+    let allPixels = canvas.children;
 
-    //set each child bg color to mainBGcolor
-    for( i=0; i< childDivs.length; i++ )
-    {
-     const childDiv = childDivs[i];
-     childDiv.setAttribute('style', `background: ${_mainBGColor}`);  
+    while(allPixels){
+        lastChild.remove();
     }
-
 }
 
 //To populate canvas with pixels
-function populateCanvas(){
-    const canvas = document.getElementById('canvas');
-    
-    let i = 81;
-    while(i>0){
+function populateCanvas(input=9){
+    let density = input*input;
+    while(density>0){
         const pixel = document.createElement("div");
         pixel.setAttribute('class','pixel');
         pixel.setAttribute('onmouseover','divColorChanger(this)');
         canvas.appendChild(pixel);
-        i--;
+        density--;
     }
+}
+
+function removeAllCanvasPixels(){
+    let lastPixel = canvas.lastElementChild;
+
+    while(lastPixel){
+        lastPixel.remove();
+    }
+}
+
+function changeCanvasColumnsAndRows(input){
+    canvas.setAttribute('style',`grid-template-columns: repeat(${input},auto);grid-template-rows: repeat(${input},auto);`);
+}
+
+function changeCanvasDensity(){
+    const input = prompt('Input density (1-100)' , '2');
+    removeAllCanvasPixels();
+    changeCanvasColumnsAndRows(input);
+    populateCanvas(input);
 }
