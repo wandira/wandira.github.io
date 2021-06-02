@@ -60,10 +60,13 @@ function divColorChanger(div){
 }
 
 function clearCanvas(){
-    let allPixels = canvas.children;
-
-    while(allPixels){
-        lastChild.remove();
+    let allPixels = [...canvas.children];
+    let len = allPixels.length;
+    for( i=0; i<len; i++ )
+    {
+        const childDiv = allPixels[i];
+        childDiv.style.cssText = `background-color:  ${_mainBGColor}`
+        // childDiv.setAttribute('style', `background: ${_mainBGColor}`);  
     }
 }
 
@@ -80,19 +83,21 @@ function populateCanvas(input=9){
 }
 
 function removeAllCanvasPixels(){
-    let lastPixel = canvas.lastElementChild;
-
-    while(lastPixel){
-        lastPixel.remove();
-    }
+    canvas.textContent = ''
 }
 
 function changeCanvasColumnsAndRows(input){
-    canvas.setAttribute('style',`grid-template-columns: repeat(${input},auto);grid-template-rows: repeat(${input},auto);`);
+    canvas.setAttribute('style',`grid-template-columns: repeat(${input},1fr);grid-template-rows: repeat(${input},1fr);`);
 }
 
 function changeCanvasDensity(){
-    const input = prompt('Input density (1-100)' , '2');
+    let input = prompt('Input density (1-100)' , '2');
+    if(input<1){
+        input=1;
+    }
+    if(input>100){
+        input=100
+    }
     removeAllCanvasPixels();
     changeCanvasColumnsAndRows(input);
     populateCanvas(input);
