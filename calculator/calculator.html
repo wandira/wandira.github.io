@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Calculator
+        </title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="ancestor">
+            <div id="header">
+                <h1>
+                    Calculator
+                </h1>
+            </div>
+            <div id="calculator">
+                <div id="inputDiv">
+                    <input id="input" type="text" onchange="handleInputChange(this)"/>
+                </div>
+                <div id="allButtons">
+                    <div id="operands">
+                        <button class="operand" onclick="handleOperandClick(this)" value="1">1</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="2">2</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="3">3</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="4">4</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="5">5</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="6">6</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="7">7</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="8">8</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="9">9</button>
+                        <button class="operand" onclick="handleOperandClick(this)" value="0">0</button>
+                        <button class="operand" onclick="handleCommaClick(this)" value=".">.</button>
+                    </div>
+                    <div id="operators">
+                        <button class="operator" onclick="handleOperatorClick(this)" value="+">+</button>
+                        <button class="operator" onclick="handleOperatorClick(this)" value="-">-</button>
+                        <button class="operator" onclick="handleOperatorClick(this)" value="x">x</button>
+                        <button class="operator" onclick="handleOperatorClick(this)" value="/">/</button>
+                        <button class="operator" onclick="handleClear()">C</button>
+                        <button class="operator" onclick="handleEqualClick()">=</button>
+                    </div>
+            </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
