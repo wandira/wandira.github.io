@@ -22,14 +22,25 @@ let input = document.getElementById('input')
 
 function handleOperandClick (target){
     console.log(target.value)
-    const number = target.value
+    let number = target.value
     if(calc.total) {
+        if(number === '.'){
+            number = '0.'
+        }
         calc.operandA = number
         calc.total = ''
     }else
     if(!calc.operator){
+        console.log(number == '.')
+        console.log(!calc.operandA)
+        if(number === '.' && !calc.operandA){
+            number = '0.'
+        }
         calc.operandA = calc.operandA.concat(number)
     } else{
+        if(number == '.' && !calc.operandB){
+            number = '0.'
+        }
         calc.operandB = calc.operandB.concat(number)
     }
     render()
@@ -56,12 +67,12 @@ function handleInputChange (target) {
 function render () {
     const currentInput = calc.total || calc.operandB || calc.operandA
     input.value = currentInput
-    console.log(input.value)
 }
 
 function handleOperatorClick (target) {
     console.log("click operator")
     const choice = target.value
+    calc.isCommaClicked = false
     if(calc.total){
         calc.operandA = calc.total
         calc.total = ''
@@ -96,7 +107,7 @@ function handleEqualClick () {
     if(!calc.operandB){
         return
     }
-    calc.total = calc.operator()
+    calc.total = calc.operator() || "0"
     calc.operandA = ''
     calc.operandB = ''
     calc.operator = ''
