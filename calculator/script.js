@@ -18,10 +18,35 @@ function divide (){
     return parseFloat(calc.operandA)/parseFloat(calc.operandB)
 }
 
-let input = document.getElementById('input')
+const input = document.getElementById('input')
+
+const allButtons = document.getElementById('allButtons')
+allButtons.addEventListener('click', event => handleButtonClick(event.target))
+
+function handleButtonClick (target)  {
+    const className = target.className
+    switch (className) {
+        case 'operand':
+            handleOperandClick(target)
+            break;
+        case 'operator':
+            handleOperatorClick(target)
+            break;
+        case 'equal':
+            handleEqualClick()
+            break;
+        case 'comma':
+            handleCommaClick(target)
+            break;
+        case 'clear':
+            handleClear()
+            break;
+        default:
+            break;
+    }
+}
 
 function handleOperandClick (target){
-    console.log(target.value)
     let number = target.value
     if(calc.total) {
         if(number === '.'){
@@ -31,8 +56,6 @@ function handleOperandClick (target){
         calc.total = ''
     }else
     if(!calc.operator){
-        console.log(number == '.')
-        console.log(!calc.operandA)
         if(number === '.' && !calc.operandA){
             number = '0.'
         }
@@ -70,7 +93,6 @@ function render () {
 }
 
 function handleOperatorClick (target) {
-    console.log("click operator")
     const choice = target.value
     calc.isCommaClicked = false
     if(calc.total){
