@@ -6,6 +6,9 @@
 
 ### Calculator
 - Disable divided by 0
+## [0.0.2] - 2021-07-19
+### Added
+- Library v1
 ## [0.0.1] - 2021-07-19
 ### Added
 - Use event delegation for calculator buttons
