@@ -6,33 +6,53 @@ function Book(title,year,haveRead){
     this.haveRead = haveRead;
 }
 
-function addBookToLibrary(){
-    const title = document.querySelector('.newTitle').value
-    const year = document.querySelector('.newYear').value
-    const haveRead = document.querySelector('.newHaveRead').checked
-    const newBook = new Book (title,year,haveRead)
-    myLibrary.push(newBook)
-    displayMyLibrary()
-}
-
-const addBtn = document.querySelector('.addBook')
-addBtn.addEventListener('click', addBookToLibrary)
-
 const hobbit = new Book("hobbit","1912",true);
 myLibrary.push(hobbit);
 const gatsby = new Book("gatsby","1950",false);
 myLibrary.push(gatsby);
 
-const list = document.querySelector('.booksContainer')
+getLibraryFromLocalStorage()
+displayMyLibrary()
+
+function getLibraryFromLocalStorage(){
+    if(localStorage.getItem('myLibrary')){
+        myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
+    }
+}
 
 function displayMyLibrary(){
-    console.log('library displayed')
-    while (list.firstChild) {
-        list.removeChild(list.lastChild);
+    document.querySelector('.newTitle').value = ''
+    document.querySelector('.newYear').value = ''
+    document.querySelector('.newHaveRead').checked = false
+
+    const bookList = document.querySelector('.booksContainer')
+    while (bookList.firstChild) {
+        bookList.removeChild(bookList.lastChild);
       }
-    myLibrary.forEach((book,index)=>{
-        list.appendChild(bookCard(book,index))
-    })
+    if(myLibrary.length==0){
+        bookList.textContent = "Currently the library is empty. Please add some books. The books will be saved to your local storage. Enjoy!"
+    }
+    else{
+        myLibrary.forEach((book,index)=>{
+            bookList.appendChild(bookCard(book,index))
+        })
+        console.log('library displayed')
+    }
+}
+
+const addBtn = document.querySelector('.addBook')
+addBtn.addEventListener('click', addBookToLibrary)
+
+function addBookToLibrary(){
+    const title = document.querySelector('.newTitle').value
+    const year = document.querySelector('.newYear').value
+    const haveRead = document.querySelector('.newHaveRead').checked
+    if(title && year){
+        const newBook = new Book (title,year,haveRead)
+        myLibrary.push(newBook)
+        localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
+        displayMyLibrary()
+    }
 }
 
 function bookCard(book,index){
@@ -50,19 +70,23 @@ function bookCard(book,index){
     }
     haveRead.setAttribute('data-index',index)
     haveRead.addEventListener('change', function() {
-        //or use this.dataset.index
-          myLibrary[this.getAttribute('data-index')].haveRead = !myLibrary[this.getAttribute('data-index')].haveRead
-      })
+        myLibrary[this.getAttribute('data-index')].haveRead = !myLibrary[this.getAttribute('data-index')].haveRead
+        localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
+     })
 
     
     const deleteBtn = document.createElement('button')
     deleteBtn.textContent = 'Delete'
     deleteBtn.setAttribute('data-index',index) 
     deleteBtn.addEventListener('click', function() {
-        //or use this.dataset.index
-        myLibrary.splice(this.dataset.index,1) 
+        myLibrary.splice(this.dataset.index,1)
+        localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
         displayMyLibrary()
       })
+
+    title.setAttribute('class','bookTitles')
+    year.setAttribute('class', 'bookYears')
+    haveRead.setAttribute('class','bookHaveReads')
 
     card.append(title)
     card.append(year)
@@ -71,5 +95,3 @@ function bookCard(book,index){
     console.log(card)
     return card
 }
-
-displayMyLibrary()

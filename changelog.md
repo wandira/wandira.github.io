@@ -6,6 +6,11 @@
 
 ### Calculator
 - Disable divided by 0
+
+
+## [0.0.3] - 2021-07-22
+### Added
+- Library v2 : save books on local storage
 ## [0.0.2] - 2021-07-19
 ### Added
 - Library v1
