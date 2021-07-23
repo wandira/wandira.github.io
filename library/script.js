@@ -1,101 +1,118 @@
+//INIT
 let myLibrary = [];
-
 function Book(title,year,haveRead){
     this.title = title;
     this.year = year;
     this.haveRead = haveRead;
 }
+Book.prototype.toggleRead = function (){
+    this.haveRead = !this.haveRead
+}
 
-const hobbit = new Book("hobbit","1912",true);
-myLibrary.push(hobbit);
-const gatsby = new Book("gatsby","1950",false);
-myLibrary.push(gatsby);
+if(localStorage.getItem('myLibrary')){
+    getLibraryFromLocalStorage()
+} else {
+    //push dummy books
+    const hobbit = new Book("hobbit","1912",true);
+    myLibrary.push(hobbit);
+    const gatsby = new Book("gatsby","1950",false);
+    myLibrary.push(gatsby);
+}
 
-getLibraryFromLocalStorage()
 displayMyLibrary()
-
-function getLibraryFromLocalStorage(){
-    if(localStorage.getItem('myLibrary')){
-        myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
-    }
-}
-
-function displayMyLibrary(){
-    document.querySelector('.newTitle').value = ''
-    document.querySelector('.newYear').value = ''
-    document.querySelector('.newHaveRead').checked = false
-
-    const bookList = document.querySelector('.booksContainer')
-    while (bookList.firstChild) {
-        bookList.removeChild(bookList.lastChild);
-      }
-    if(myLibrary.length==0){
-        bookList.textContent = "Currently the library is empty. Please add some books. The books will be saved to your local storage. Enjoy!"
-    }
-    else{
-        const fields = document.createElement('div')
-        const title = document.createElement('div')
-        title.textContent = 'Title'
-        const year = document.createElement('div')
-        year.textContent = 'Year'
-        const haveRead = document.createElement('div')
-        haveRead.textContent = 'Have read'
-        fields.append(title)
-        fields.append(year)
-        fields.append(haveRead)
-        fields.setAttribute('class','div-card')
-        fields.setAttribute('style','font-weight: 600; border-top: 1px solid rgba(0, 0, 0, 0.316)')
-        bookList.append(fields)
-        myLibrary.forEach((book,index)=>{
-            bookList.appendChild(bookCard(book,index))
-        })
-        console.log('library displayed')
-    }
-}
 
 const addBtn = document.querySelector('.addBook')
 addBtn.addEventListener('click', addBookToLibrary)
+
+
+//FUNCTIONS
+function getLibraryFromLocalStorage(){
+    const localLibrary = JSON.parse(localStorage.getItem('myLibrary'))
+    localLibrary.forEach((book)=>{
+        const { title,year,haveRead } = book
+        myLibrary.push(new Book(title,year,haveRead)) //for prototypal inheritance (toggleRead function)
+    })
+}
 
 function addBookToLibrary(){
     const title = document.querySelector('.newTitle').value
     const year = document.querySelector('.newYear').value
     const haveRead = document.querySelector('.newHaveRead').checked
+    //if inputs valid, save to myLibrary and localStorage then display library and reset inputs
     if(title && year){
         const newBook = new Book (title,year,haveRead)
         myLibrary.push(newBook)
         localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
+        resetDisplay()
         displayMyLibrary()
+        resetInputs()
     }
 }
 
-function bookCard(book,index){
+function resetDisplay(){
+    const bookList = document.querySelector('.booksContainer')
+    while (bookList.firstChild) {
+        bookList.removeChild(bookList.lastChild);
+      }
+}
+
+function displayMyLibrary(){
+    const bookList = document.querySelector('.booksContainer')
+    if(myLibrary.length==0){
+        bookList.textContent = "Currently the library is empty. Please add some books. The books will be saved to your local storage. Enjoy!"
+    }
+    else{
+        bookList.append(getFieldsCard())
+        myLibrary.forEach((book,index)=>{
+            bookList.appendChild(getBookCard(book,index))
+        })
+    }
+}
+
+function resetInputs(){
+    document.querySelector('.newTitle').value = ''
+    document.querySelector('.newYear').value = ''
+    document.querySelector('.newHaveRead').checked = false
+}
+
+function getFieldsCard(){
+    const fields = document.createElement('div')
+
+    const title = document.createElement('div')
+    title.textContent = 'Title'
+    const year = document.createElement('div')
+    year.textContent =   'Year'
+    const haveRead = document.createElement('div')
+    haveRead.textContent = 'Have read'
+
+    fields.append(title)
+    fields.append(year)
+    fields.append(haveRead)
+    fields.setAttribute('class','div-card')
+    fields.setAttribute('style','font-weight: 600; border-top: 1px solid rgba(0, 0, 0, 0.316)')
+    return fields
+}
+
+function getBookCard(book,index){
     const card = document.createElement('div')
     card.setAttribute('class','div-card')
 
     const title = document.createElement('div')
     title.textContent = book.title
+
     const year = document.createElement('div')
     year.textContent = book.year
+
     const haveRead = document.createElement('input')
     haveRead.setAttribute('type','checkbox')
     if(book.haveRead){
         haveRead.setAttribute('checked',book.haveRead)
     }
     haveRead.setAttribute('data-index',index)
-    haveRead.addEventListener('change', function() {
-        myLibrary[this.getAttribute('data-index')].haveRead = !myLibrary[this.getAttribute('data-index')].haveRead
-        localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
-     })
 
-    
     const deleteBtn = document.createElement('button')
     deleteBtn.textContent = 'Delete'
-    deleteBtn.setAttribute('data-index',index) 
-    deleteBtn.addEventListener('click', function() {
-        myLibrary.splice(this.dataset.index,1)
-        localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
-        displayMyLibrary()
-      })
+    deleteBtn.setAttribute('data-index',index)
 
     title.setAttribute('class','bookTitles')
     year.setAttribute('class', 'bookYears')
@@ -106,6 +123,16 @@ function bookCard(book,index){
     card.append(year)
     card.append(haveRead)
     card.append(deleteBtn)
-    console.log(card)
+    card.addEventListener('click', (e)=>{
+        if(e.target.className =='deleteButtons'){
+            myLibrary.splice(e.target.dataset.index,1)
+            localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
+            resetDisplay()
+            displayMyLibrary()
+        }else if(e.target.className == 'bookHaveReads'){
+            myLibrary[e.target.dataset.index].toggleRead()
+            localStorage.setItem('myLibrary',JSON.stringify(myLibrary))
+        }
+    })
     return card
 }
