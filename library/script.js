@@ -33,6 +33,19 @@ function displayMyLibrary(){
         bookList.textContent = "Currently the library is empty. Please add some books. The books will be saved to your local storage. Enjoy!"
     }
     else{
+        const fields = document.createElement('div')
+        const title = document.createElement('div')
+        title.textContent = 'Title'
+        const year = document.createElement('div')
+        year.textContent = 'Year'
+        const haveRead = document.createElement('div')
+        haveRead.textContent = 'Have read'
+        fields.append(title)
+        fields.append(year)
+        fields.append(haveRead)
+        fields.setAttribute('class','div-card')
+        fields.setAttribute('style','font-weight: 600; border-top: 1px solid rgba(0, 0, 0, 0.316)')
+        bookList.append(fields)
         myLibrary.forEach((book,index)=>{
             bookList.appendChild(bookCard(book,index))
         })
@@ -87,6 +100,7 @@ function bookCard(book,index){
     title.setAttribute('class','bookTitles')
     year.setAttribute('class', 'bookYears')
     haveRead.setAttribute('class','bookHaveReads')
+    deleteBtn.setAttribute('class','deleteButtons')
 
     card.append(title)
     card.append(year)

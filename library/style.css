@@ -33,24 +33,37 @@ body{
 .div-card{
     align-items: center ;
     border: 1px solid rgba(0, 0, 0, 0.316);
+    border-top: none;
     padding: 10px;
     width: 95%;
     display: grid;
-    grid-template-columns: 2fr 1fr 0.3fr 1fr;
+    grid-template-columns: 2fr 1fr 0.4fr 0.3fr;
     word-break: break-all;
     column-gap: 5px;
-    margin: 10px;
-}
-
-.bookTitles{
-    font-weight: 600;
+    margin: 0px 10px;
+    min-height: 50px;
+    justify-items: baseline;
 }
 
 input{
     height: 30px;
 }
-input[type=checkbox] {
+
+ .div-card > input[type=checkbox] {
+    height: auto;
+    margin: 8px;
+    transform: scale(3);
+}
+
+.newHaveRead {
     height: auto;
     margin: 8px;
     transform: scale(1.5);
+}
+
+.deleteButtons{
+    color: white;
+    background-color: #e84444;
+    border: none;
+    place-self: stretch;
 }
