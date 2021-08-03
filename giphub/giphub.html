@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amin husbando</title>
+</head>
+<body>
+  <button>Semoga pencet dapet zhongli amin</button>
+  <br/>
+  <video src="#" autoplay loop muted width="800px"></video>
+  <script>
+    const fire = 'https://api.giphy.com/v1/gifs/translate?api_key=' + 'MtDU9hGd' + 'Ris03MSI0m2WZ' + '2heAShFuDHw&s=genshin+impact'
+    const btn = document.querySelector('button');
+    const video = document.querySelector('video');
+    btn.addEventListener('click',function(){
+        console.log('clicked')
+        fetch(fire, {mode: 'cors'})
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(response) {
+                    video.src = response.data.images.downsized_small.mp4;
+                    
+                });
+    })
+  </script>
+</body>
+</html>
