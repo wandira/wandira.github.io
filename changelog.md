@@ -9,6 +9,10 @@
 
 ## [0.0.4] - 2021-07-22
 ### Added
+- Tic Tac Toe 3.0.0 : Player vs Player, vs COM, vs Minimax
+
+## [0.0.4] - 2021-07-22
+### Added
 - Library 1.1.1 : UI improvements (book list)
 ## [0.0.3] - 2021-07-22
 ### Added
