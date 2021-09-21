@@ -3,6 +3,8 @@
 ## [3.0.1] - 2021-09-21
 ### Added
 - Choose opponent modal title
+- Change COM name to minimax if opponent is minimax
+
 ### Fixed
 - Change modal toggle to display instead of using visibility
 

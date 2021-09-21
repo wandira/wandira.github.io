@@ -7,7 +7,12 @@
 ### Calculator
 - Disable divided by 0
 
-## [0.0.4] - 2021-07-22
+## [0.0.5] - 2021-09-21
+### Edited
+- Tic Tac Toe UI fix
+- Landing page redesign
+
+## [0.0.4] - 2021-09-20
 ### Added
 - Tic Tac Toe 3.0.0 : Player vs Player, vs COM, vs Minimax
 

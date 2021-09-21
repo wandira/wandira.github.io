@@ -5,5 +5,47 @@ body{
 }
 
 a{
-  font-size: 3rem;
+  color: rgb(156, 60, 246);
+  font-size: 4rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+
+a:visited {
+  color: rgb(253, 236, 160);
+}
+
+a:hover {
+  color: rgb(226, 214, 161);
+  text-decoration: underline;
+}
+
+a:active {
+  color: white;
+  text-decoration: underline;
+}
+
+#grandparent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+@media(max-device-width: 768px) {
+  #grandparent{
+    align-items: end;
+    justify-content: end;
+  }
+  #parent{
+    text-align: right;
+    margin: 140px 100px;
+  }
+  a{
+    line-height: 1.4;
+  }
 }
