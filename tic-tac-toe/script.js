@@ -305,6 +305,10 @@ const ticTacToeGame = (function(){
                                                 justify-content: space-evenly;
                                                 height: 300px;`)
 
+            const welcomeTitle = document.createElement('span')
+            welcomeTitle.textContent = 'Choose opponent'
+            welcomeTitle.setAttribute('style', `font-size: 30px; line-height: 2;`)
+
             const pvp = document.createElement('button')
             const pvc = document.createElement('button')
             const pvm = document.createElement('button')
@@ -349,6 +353,7 @@ const ticTacToeGame = (function(){
             pvc.addEventListener('click',playerVsCom)
             pvm.addEventListener('click',playerVsMinimax)
 
+            chooseDiv.appendChild(welcomeTitle)
             chooseDiv.appendChild(pvp)
             chooseDiv.appendChild(pvc)
             chooseDiv.appendChild(pvm)
@@ -358,28 +363,28 @@ const ticTacToeGame = (function(){
             function playerVsPlayer(){
                 logic.startVersusPlayer()
                 setTimeout(()=>{
-                    chooseOpponentModal.style.visibility = "hidden";
+                    chooseOpponentModal.style.display = "none";
                 },200)
             }
 
             function playerVsCom(){
                 logic.startVersusCom()
                 setTimeout(()=>{
-                    chooseOpponentModal.style.visibility = "hidden";
+                    chooseOpponentModal.style.display = "none";
                 },200)
             }
 
             function playerVsMinimax(){
                 logic.startVersusCom(true)
                 setTimeout(()=>{
-                    chooseOpponentModal.style.visibility = "hidden";
+                    chooseOpponentModal.style.display = "none";
                 },200)
             }
         }
 
         function openChooseOpponentModal(){
             const chooseOpponentModal = document.getElementById('chooseOpponentModal')
-            chooseOpponentModal.style.visibility = "visible";
+            chooseOpponentModal.style.display = "inherit";
         }
         return { initializeBoardDOM, initializeChooseOpponentModal, initializeRestartBtn, openChooseOpponentModal, fillBox, updatePrompt, win, tie }
     })()
@@ -468,7 +473,7 @@ const ticTacToeGame = (function(){
         function startVersusCom(minimax=false){
             //add randomizer index here later
             players[0] = PlayerFactory("Player",false,'O')
-            players[1] = PlayerFactory("COM",true,'X')
+            players[1] = PlayerFactory(`${minimax ? 'Minimax' : 'COM'}`,true,'X')
 
             currentPlayer = players[0]
 

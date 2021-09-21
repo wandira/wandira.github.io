@@ -1,5 +1,11 @@
 # Tic Tac Toe Changelog
 
+## [3.0.1] - 2021-09-21
+### Added
+- Choose opponent modal title
+### Fixed
+- Change modal toggle to display instead of using visibility
+
 ## [3.0.0] - 2021-09-20
 ### Added
 - Add versus minimax

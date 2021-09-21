@@ -38,7 +38,6 @@ body {
   background-color: #beaec4;
   height: 95vh;
   width: 95vw;
-  visibility: hidden;
   position: absolute;
   z-index: 10;
   top: 3%;
