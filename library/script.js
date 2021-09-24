@@ -1,12 +1,14 @@
 //INIT
 let myLibrary = [];
-function Book(title,year,haveRead){
-    this.title = title;
-    this.year = year;
-    this.haveRead = haveRead;
-}
-Book.prototype.toggleRead = function (){
-    this.haveRead = !this.haveRead
+class Book{
+    constructor(title,year,haveRead){
+        this.title = title;
+        this.year = year;
+        this.haveRead = haveRead;
+    }
+    toggleRead(){
+        this.haveRead = !this.haveRead
+    }
 }
 
 if(localStorage.getItem('myLibrary')){
