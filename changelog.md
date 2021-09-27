@@ -7,10 +7,14 @@
 ### Calculator
 - Disable divided by 0
 
+## [0.0.7] - 2021-09-27
+### Added
+- Restaurant skeleton (webpack dist)
 
 ## [0.0.6] - 2021-09-24
 ### Edited
 - Refactor library to use class instead of constructor function
+
 ## [0.0.5] - 2021-09-21
 ### Edited
 - Tic Tac Toe UI fix
