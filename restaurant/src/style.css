@@ -6,11 +6,21 @@ body{
   }
 
 .content {
-    display: block;
+  display:flex; 
+  flex-direction:column;
+  height:100vh;
+}
+
+.contentNav {
+  display:flex;
+  align-items: center;
 }
 
 .contentBody {
-    margin: 300px
+  align-items: center;
+  display:flex; 
+  flex-direction:column;
+  margin: 100px
 }
 
 /* adapted from https://www.w3schools.com/*/
@@ -19,16 +29,16 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(139, 135, 135);
+  background-color:rgb(248, 194, 128);
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .navImg{
-    height: 200px;
-    width: 200px;
+    height: 80px;
+    width: 80px;
     margin: 20px;
 }
 
@@ -37,8 +47,12 @@ ul {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(133deg) brightness(103%) contrast(100%);
 }
 
+li {
+  display: flex;
+  align-items: center;
+}
+
 li a {
-  display: block;
   color: rgb(0, 0, 0);
   font-size: xx-large;
   text-align: center;
@@ -51,6 +65,13 @@ li a:hover:not(.active) {
   color: #FFF;
 }
 
-.active {
-  background-color: #e4e4e4;
+.footer {
+  margin-top: auto;
+  min-height: 100px;
+  background-color: rgb(216, 185, 136);
+  color: rgb(100, 73, 73);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

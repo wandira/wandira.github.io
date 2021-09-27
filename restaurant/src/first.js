@@ -2,7 +2,7 @@ import Home from './home'
 import ContactUs from './contactUs'
 import Menu from './menu'
 
-import './style.css'
+import styles from './style.css'
 
 export default function runThisOnPageLoad(){
     function renderMenu(){
@@ -18,21 +18,22 @@ export default function runThisOnPageLoad(){
     }
 
     window.onload = function () {
+
         console.log('This will log only once')
         const div = document.getElementById('content')
-        div.className = 'content'
+        div.className = styles.content
 
         const contentBody = document.createElement('div')
-        contentBody.className = 'contentBody'
+        contentBody.className = styles.contentBody
         contentBody.id = 'contentBody'
 
         const contentNav = document.createElement('div')
-        contentNav.className = 'contentNav'
+        contentNav.className = styles.contentNav
         const navbarItems = document.createElement('ul')
 
         const img = new Image()
         img.src = 'https://cdn-icons-png.flaticon.com/512/3208/3208003.png'
-        img.className = 'navImg'
+        img.className = styles.navImg
         const navImg = document.createElement('li')
         navImg.appendChild(img)
         navImg.addEventListener('click',renderHome)
@@ -49,13 +50,21 @@ export default function runThisOnPageLoad(){
         link2.addEventListener('click',renderContactUs)
         item2.appendChild(link2)
 
-        navbarItems.appendChild(item1)
+
         navbarItems.appendChild(navImg)
+        navbarItems.appendChild(item1)
         navbarItems.appendChild(item2)
         contentNav.appendChild(navbarItems)
+    
+
+        const footer = document.createElement('div')
+
+        footer.innerHTML= 'Icons made by&nbsp;<a href="https://www.freepik.com" title="Freepik">Freepik</a>&nbsp;from&nbsp;<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>'
+        footer.className = styles.footer
 
         div.appendChild(contentNav)
         div.appendChild(contentBody)
+        div.appendChild(footer)
         renderHome()
     }
 }

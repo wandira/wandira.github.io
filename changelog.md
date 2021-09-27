@@ -7,6 +7,10 @@
 ### Calculator
 - Disable divided by 0
 
+## [0.0.8] - 2021-09-27
+### Added
+- Restaurant: implement css modules
+
 ## [0.0.7] - 2021-09-27
 ### Added
 - Restaurant skeleton (webpack dist)
