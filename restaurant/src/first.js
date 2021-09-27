@@ -2,6 +2,8 @@ import Home from './home'
 import ContactUs from './contactUs'
 import Menu from './menu'
 
+import './style.css'
+
 export default function runThisOnPageLoad(){
     function renderMenu(){
         Menu()
