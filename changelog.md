@@ -7,6 +7,10 @@
 ### Calculator
 - Disable divided by 0
 
+## [0.0.9] - 2021-09-28
+### Added
+- Restaurant: Enforce Airbnb style using eslint
+
 ## [0.0.8] - 2021-09-27
 ### Added
 - Restaurant: implement css modules
