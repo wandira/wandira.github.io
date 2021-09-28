@@ -7,9 +7,9 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     // clean: true,
-    assetModuleFilename: 'images/[hash][ext][query]'
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
-  devServer : {
+  devServer: {
     static: './dist',
   },
   module: {
@@ -21,21 +21,21 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      },      {
+              ['@babel/preset-env', { targets: 'defaults' }],
+            ],
+          },
+        },
+      }, {
         test: /\.css$/i,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               importLoaders: 1,
               modules: {
-              localIdentName: "[name]_[local]__[hash:base64:5]"
-              }
+                localIdentName: '[name]_[local]__[hash:base64:5]',
+              },
             },
           },
         ],
