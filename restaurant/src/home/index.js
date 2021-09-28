@@ -6,19 +6,29 @@ import styles from'./style.css'
 export default function (){
     const div = document.getElementById('contentBody')
     div.textContent = ''
+
+    const home = document.createElement('div')
     
-    const span = document.createElement('h1')
-    span.textContent = "Home"
-    span.className = styles.title
-    div.appendChild(span)
+    const title = document.createElement('h1')
+    title.textContent = "Welcome to Albedo's Cafe"
+    title.className = styles.title
+    home.appendChild(title)
+
 
     const img = new Image()
     img.src = albedo
     img.className = styles.img
-    div.appendChild(img)
+    home.appendChild(img)
+
+    const sub = document.createElement('h2')
+    sub.textContent = "Please take a look at our menu"
+    sub.className = styles.subtitle
+    home.appendChild(sub)
 
     // const img2 = new Image()
     // img2.src = xingqiu
-    // div.appendChild(img2)
+    
+    div.appendChild(home)
+
 }
         

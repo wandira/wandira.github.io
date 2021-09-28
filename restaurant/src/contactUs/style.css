@@ -4,4 +4,15 @@
 
 .img {
     width: 900px;
+    position: relative;
+    top:130px
+}
+
+.number {
+    color: rgb(243, 35, 139);
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
 }

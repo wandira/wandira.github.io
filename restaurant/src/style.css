@@ -65,6 +65,14 @@ li a:hover:not(.active) {
   color: #FFF;
 }
 
+.active a{
+  color: #FFF;
+}
+
+.active img{
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(133deg) brightness(103%) contrast(100%);
+}
+
 .footer {
   margin-top: auto;
   min-height: 100px;

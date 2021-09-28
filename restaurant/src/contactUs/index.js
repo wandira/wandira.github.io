@@ -11,8 +11,17 @@ export default function (){
     span.className = styles.title
     div.appendChild(span)
 
+    const body = document.createElement('div')
+    body.className = styles.body
+    div.appendChild(body)
+
+    const num = document.createElement('h3')
+    num.textContent = "0812xxxxxx"
+    num.className = styles.number
+    body.appendChild(num)
+
     const img = new Image()
     img.src = noelle
     img.className = styles.img
-    div.appendChild(img)
+    body.appendChild(img)
 }
