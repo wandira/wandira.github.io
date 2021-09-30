@@ -7,6 +7,10 @@
 ### Calculator
 - Disable divided by 0
 
+## [0.0.10] - 2021-09-29
+### Added
+- Form Validation: implement lodash trailing throttle and debounce
+
 ## [0.0.9] - 2021-09-28
 ### Added
 - Restaurant: Enforce Airbnb style using eslint
