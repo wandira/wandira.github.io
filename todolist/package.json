@@ -1,0 +1,22 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "todolist app odin project ",
+  "author": "wandira",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "html-webpack-plugin": "^5.4.0"
+  }
+}
