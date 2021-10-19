@@ -12,8 +12,15 @@ const controller = (function ControllerModule() {
   //   console.log(data);
   // }
 
-  pubsub.subscribe('skeletonRendered', model.getProjects);
-  pubsub.subscribe('projectSent', view.renderAll);
+  pubsub.subscribe('skeletonRendered', model.updateData);
+  pubsub.subscribe('todoAdded', view.renderTodos);
+  pubsub.subscribe('projectAdded', model.updateData);
+  // pubsub.subscribe('todoDeleted', model.updateData);
+  // pubsub.subscribe('projectDeleted', model.updateData);
+
+  pubsub.subscribe('dataUpdated', view.renderAll);
+  pubsub.subscribe('projectsUpdated', view.renderProjects);
+  // pubsub.subscribe('addNewTodo', model.ad)
 
   function run() {
     view.skeletonRender();

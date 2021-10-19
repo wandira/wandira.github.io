@@ -1,28 +1,6 @@
 import ProjectFactory from './project';
 import TodoFactory from './todo';
 
-export default function App(pubsub) {
-  const projects = getDummyProjects();
-
-  function getProjects() {
-    pubsub.publish('projectSent', { projects });
-  }
-
-  function addProjects(title) {
-    projects.push(ProjectFactory(title));
-  }
-
-  function deleteProject(index) {
-    projects.splice(index, 1);
-  }
-
-  return {
-    getProjects,
-    addProjects,
-    deleteProject,
-  };
-}
-
 function getDummyProjects() {
   const one = ProjectFactory('Default title');
   const two = ProjectFactory('Default title2');
@@ -42,4 +20,21 @@ function getDummyProjects() {
   }
 
   return [one, two];
+}
+
+export default function App(pubsub) {
+  const projects = getDummyProjects();
+
+  function updateData() {
+    pubsub.publish('dataUpdated', { projects });
+  }
+
+  function deleteProject(index) {
+    projects.splice(index, 1);
+  }
+
+  return {
+    updateData,
+    deleteProject,
+  };
 }
