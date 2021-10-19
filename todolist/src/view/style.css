@@ -1,0 +1,52 @@
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.root{
+    background-color: bisque;
+    display: flex;
+}
+
+.sidebar{
+    align-items: center;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 20vw;
+}
+
+.content{
+    align-items: center;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 80vw;
+}
+
+.sidebarBody{
+    border: 2px solid white;
+    height: 80%;
+    width: 80%;
+}
+
+.contentBody{
+    border: 2px solid white;
+    height: 80%;
+    width: 80%;
+}
+
+.todo {
+    border: 3px solid orange;
+    margin: 5px;
+    padding: 20px 4px;
+}
+
+.project {
+    border: 2px solid whitesmoke;
+    margin: 2px;
+    padding: 15px 2px;
+}
