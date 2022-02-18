@@ -1,17 +1,16 @@
-body{
+body {
   margin: 0;
   background-color: rgb(182, 171, 158);
-  font-family: Arial, Helvetica, sans-serif ;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-a{
+a {
   color: rgb(156, 60, 246);
   font-size: 4rem;
   font-weight: 600;
   text-decoration: none;
   line-height: 1.2;
 }
-
 
 a:visited {
   color: rgb(253, 236, 160);
@@ -27,25 +26,30 @@ a:active {
   text-decoration: underline;
 }
 
-#grandparent{
+#grandparent {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  padding: 15rem 7rem;
 }
 
-@media(max-device-width: 768px) {
-  #grandparent{
+@media (max-device-width: 768px) {
+  #grandparent {
     align-items: end;
     justify-content: end;
   }
-  #parent{
+  #parent {
     text-align: right;
     margin: 140px 100px;
   }
-  a{
+  a {
     line-height: 1.4;
   }
+}
+
+.title {
+  font-size: 5rem;
 }
