@@ -1,0 +1,83 @@
+/* set font size at root(html) so rem would work*/
+@media (max-width: 575px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media (min-width: 992px) {
+  html {
+    font-size: 28px;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(60, 60, 168);
+  min-height: 100vh;
+  color: white;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  width: 50%;
+}
+
+.grow1 {
+  flex: 1;
+}
+.grow2 {
+  flex: 1;
+}
+
+h1 {
+  font-size: 5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+button {
+  height: 1.5rem;
+  font-size: 1rem;
+  background-color: rgb(8, 9, 58);
+  color: rgb(224, 224, 224);
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  visibility: hidden;
+  width: 90%;
+}
+
+span {
+  font-size: larger;
+  margin-bottom: 5px;
+}
