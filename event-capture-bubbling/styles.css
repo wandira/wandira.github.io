@@ -1,0 +1,23 @@
+.one {
+  background-color: lavender;
+  width: 90vw;
+  height: 90vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.two {
+  background-color: pink;
+  width: 80vw;
+  height: 70vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.three {
+  background-color: tomato;
+  width: 30vw;
+  height: 40vh;
+}
