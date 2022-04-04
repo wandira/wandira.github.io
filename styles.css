@@ -31,9 +31,19 @@ a:active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   width: 100vw;
-  padding: 15rem 7rem;
+}
+
+#parent {
+  margin: 5rem 5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexChild {
+  flex: 1 1;
 }
 
 @media (max-device-width: 768px) {
@@ -48,8 +58,15 @@ a:active {
   a {
     line-height: 1.4;
   }
+  .flex {
+    flex-direction: column;
+  }
 }
 
 .title {
-  font-size: 5rem;
+  font-size: 4rem;
+}
+
+.pokedut {
+ width: 100%;
 }
